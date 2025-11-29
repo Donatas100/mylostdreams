@@ -5,6 +5,7 @@ import styles from './page.module.css'
 export default function Home() {
   const lumenPost = posts.find(p => p.slug === 'lumen-a-soul-fragment')
   const systemPost = posts.find(p => p.slug === 'you-live-in-a-system')
+  const lumenContent = lumenPost?.content
 
   return (
     <div className={styles.container}>
@@ -33,11 +34,11 @@ export default function Home() {
             </p>
           </section>
 
-          {lumenPost && lumenPost.content && (
+          {lumenContent && (
             <section className={styles.fullText}>
               <div 
                 className={styles.postContent}
-                dangerouslySetInnerHTML={{ __html: lumenPost.content.replace(/\n/g, '<br>') }} 
+                dangerouslySetInnerHTML={{ __html: lumenContent.replace(/\n/g, '<br>') }} 
               />
             </section>
           )}
