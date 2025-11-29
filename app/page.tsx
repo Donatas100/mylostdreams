@@ -34,14 +34,14 @@ export default function Home() {
             </p>
           </section>
 
-          {lumenContent && (
+          {lumenContent ? (
             <section className={styles.fullText}>
               <div 
                 className={styles.postContent}
                 dangerouslySetInnerHTML={{ __html: lumenContent.replace(/\n/g, '<br>') }} 
               />
             </section>
-          )}
+          ) : null}
 
           {systemPost && (
             <section className={styles.journey}>
