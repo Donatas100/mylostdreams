@@ -41,7 +41,23 @@ export default function PostPage({ params }: { params: { slug: string } }) {
       <main className={styles.postContent}>
         <div className={styles.postBody}>
           {post.content ? (
-            <div dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, '<br>') }} />
+            <div className={styles.postContent}>
+              {post.content
+                .replace(/<p>/g, '')
+                .replace(/<\/p>/g, '\n\n')
+                .split('\n\n')
+                .filter(p => p.trim())
+                .map((paragraph, idx) => (
+                  <p key={idx}>
+                    {paragraph.split('\n').map((line, lineIdx) => (
+                      <span key={lineIdx}>
+                        {line}
+                        {lineIdx < paragraph.split('\n').length - 1 && <br />}
+                      </span>
+                    ))}
+                  </p>
+                ))}
+            </div>
           ) : (
             <p className={styles.comingSoon}>Content coming soon...</p>
           )}
