@@ -36,10 +36,23 @@ export default function Home() {
 
           {lumenContent ? (
             <section className={styles.fullText}>
-              <div 
-                className={styles.postContent}
-                dangerouslySetInnerHTML={{ __html: lumenContent.replace(/\n/g, '<br>') }} 
-              />
+              <div className={styles.postContent}>
+                {lumenContent
+                  .replace(/<p>/g, '')
+                  .replace(/<\/p>/g, '\n\n')
+                  .split('\n\n')
+                  .filter(p => p.trim())
+                  .map((paragraph, idx) => (
+                    <p key={idx}>
+                      {paragraph.split('\n').map((line, lineIdx) => (
+                        <span key={lineIdx}>
+                          {line}
+                          {lineIdx < paragraph.split('\n').length - 1 && <br />}
+                        </span>
+                      ))}
+                    </p>
+                  ))}
+              </div>
             </section>
           ) : null}
 
