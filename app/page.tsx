@@ -33,7 +33,7 @@ export default function Home() {
             </p>
           </section>
 
-          {lumenPost && (
+          {lumenPost && lumenPost.content && (
             <section className={styles.fullText}>
               <div 
                 className={styles.postContent}
