@@ -25,19 +25,10 @@ export default function PostsPage() {
               href={`/posts/${post.slug}`}
               className={styles.postCard}
             >
-              <h2 style={{ 
-                fontSize: '1.3rem', 
-                fontWeight: 400, 
-                marginBottom: '0.5rem',
-                color: 'var(--text-primary)'
-              }}>
+              <h2 className={styles.postCardTitle}>
                 {post.title}
               </h2>
-              <p style={{ 
-                fontSize: '0.9rem', 
-                color: 'var(--text-secondary)',
-                fontWeight: 300
-              }}>
+              <p className={styles.postCardDate}>
                 {post.date}
               </p>
             </Link>
