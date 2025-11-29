@@ -23,25 +23,7 @@ export default function PostsPage() {
             <Link 
               key={post.slug} 
               href={`/posts/${post.slug}`}
-              style={{
-                background: 'var(--bg-secondary)',
-                border: '1px solid var(--border)',
-                borderRadius: '12px',
-                padding: '2rem',
-                transition: 'all 0.3s ease',
-                textDecoration: 'none',
-                color: 'var(--text-primary)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.borderColor = 'var(--accent)';
-                e.currentTarget.style.boxShadow = '0 8px 24px rgba(251, 191, 36, 0.1)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.borderColor = 'var(--border)';
-                e.currentTarget.style.boxShadow = 'none';
-              }}
+              className={styles.postCard}
             >
               <h2 style={{ 
                 fontSize: '1.3rem', 
